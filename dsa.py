@@ -1,3 +1,3 @@
-from  simglucose.simulation.user_interface import simulate
+from simglucose.base import Controller
 
-simulate() 
+print(Controller())
