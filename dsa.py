@@ -1,3 +1,3 @@
-from simglucose.base import Controller
+from .baase import Controller
 
-print(Controller())
+print(Controller)
