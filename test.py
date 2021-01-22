@@ -5,7 +5,7 @@ from simglucose.actuator.pump import InsulinPump
 from simglucose.patient.t1dpatient import T1DPatient
 from simglucose.simulation.scenario_gen import RandomScenario
 from simglucose.simulation.scenario import CustomScenario
-from simglucose.simulation.sim_engine import SimObj, sim, batch_sim
+from simglucose.simulation.sim_engine import SimObj, sim
 from datetime import timedelta
 from datetime import datetime
 
@@ -18,7 +18,7 @@ start_time = datetime.combine(now.date(), datetime.min.time())
 path = 'pp/results'
 
 # Create a simulation environment
-patient = T1DPatient.withName('adolescent#002')
+patient = T1DPatient.withName('adolescent#001')
 sensor = CGMSensor.withName('Dexcom', seed=1)
 pump = InsulinPump.withName('Insulet')
 scenario = RandomScenario(start_time=start_time, seed=1)
@@ -53,7 +53,7 @@ print(results1)
 
 # --------- batch simulation --------------
 # Re-initialize simulation objects
-s1.reset()
+#s1.reset()
 #s2.reset()
 
 # create a list of SimObj, and call batch_sim
