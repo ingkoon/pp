@@ -1,8 +1,8 @@
 from datetime import *
 from collections import namedtuple
 
-week = timedelta(weeks = 1)
-print(week)
+week = timedelta(weeks = 2)
+print(week.days)
 
 next_week = date.today() + week
 print(next_week)
