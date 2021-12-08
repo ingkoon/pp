@@ -51,7 +51,7 @@ class _MyHomePageState extends State<MyHomePage> {
               Container(
                 child: Image.asset(
                   "imgs/fill_racoon.png",
-                  width: width * 0.45,
+                  width: width * 0.4,
                 ),
               ),
               Container(
@@ -162,15 +162,16 @@ class _MyHomePageState extends State<MyHomePage> {
                   ],
                 ),
               ),
-              TextButton(
-                  onPressed: () {},
-                  child: const Text(
-                    '아이디 혹은 비밀번호를 잊어버리셨나요?',
-                    style: TextStyle(
-                        color: Colors.grey,
-                        fontSize: 10,
-                        decoration: TextDecoration.underline),
-                  ))
+              Container(
+                  child: TextButton(
+                      onPressed: () {},
+                      child: const Text(
+                        '아이디 혹은 비밀번호를 잊어버리셨나요?',
+                        style: TextStyle(
+                            color: Colors.grey,
+                            fontSize: 10,
+                            decoration: TextDecoration.underline),
+                      ))),
             ],
           ),
         ),
