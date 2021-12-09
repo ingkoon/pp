@@ -3,6 +3,9 @@ import 'package:dd_racoon/resource/utils.dart';
 
 import 'package:delayed_widget/delayed_widget.dart';
 import 'package:get/get.dart';
+import 'package:http/http.dart' as http;
+import 'package:dd_racoon/model/model.dart';
+import 'dart:convert';
 
 class signUpEmail extends StatelessWidget {
   Widget build(BuildContext context) {
@@ -23,6 +26,24 @@ class signUpEmailPageState extends State<signUpEmailPage> {
   var dataVal = Get.arguments;
   final emailController = TextEditingController();
   final nicknameController = TextEditingController();
+
+  // Future<List<User>> users;
+  // final userListKey = GlobalKey<signUpEmailPageState>();
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   users = getUserList();
+  // }
+  // Future<List<User>> getUserList() async {
+  //   final response = await http.get("${Env.URL_PREFIX}/employeedetails");
+
+  //   final items = json.decode(response.body).cast<Map<String, dynamic>>();
+  //   List<User> employees = items.map<User>((json) {
+  //     return User.fromJson(json);
+  //   }).toList();
+
+  //   return employees;
+  // }
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;

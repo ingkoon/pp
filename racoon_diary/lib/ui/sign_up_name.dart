@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:dd_racoon/resource/utils.dart';
 import 'package:delayed_widget/delayed_widget.dart';
 import 'package:get/get.dart';
@@ -32,10 +34,20 @@ class signUpEmailPageState extends State<signUpEmailPage> {
     super.dispose();
   }
 
+  final void Function(DateTime)? onDateTimeChanged;
+  final String? initDateStr;
+
+  signUpEmailPageState({
+    this.onDateTimeChanged,
+    this.initDateStr,
+  });
+
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
+    final initDate =
+        DateFormat('yyyy-MM-dd').parse(initDateStr ?? '2000-01-01');
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: const Color(0xFFb1a8c0),
@@ -100,6 +112,17 @@ class signUpEmailPageState extends State<signUpEmailPage> {
                           borderRadius:
                               BorderRadius.all(Radius.circular(10.0)))),
                 )),
+            Container(
+              height: height * 0.3,
+              child: CupertinoDatePicker(
+                minimumYear: 1900,
+                maximumYear: DateTime.now().year,
+                initialDateTime: initDate,
+                maximumDate: DateTime.now(),
+                onDateTimeChanged: onDateTimeChanged,
+                mode: CupertinoDatePickerMode.date,
+              ),
+            ),
             Container(
               alignment: Alignment.centerRight,
               margin: EdgeInsets.only(right: width * 0.05),
