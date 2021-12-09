@@ -41,13 +41,13 @@ class CustomDialog extends StatelessWidget {
         children: <Widget>[
           Container(
             // Bottom rectangular box
-            margin: EdgeInsets.only(
+            margin: const EdgeInsets.only(
                 top: 40), // to push the box half way below circle
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(12),
             ),
-            padding: EdgeInsets.only(
+            padding: const EdgeInsets.only(
                 top: 60, left: 20, right: 20), // spacing inside the box
             child: Column(
               mainAxisSize: MainAxisSize.min,
@@ -56,7 +56,7 @@ class CustomDialog extends StatelessWidget {
                   title,
                   style: Theme.of(context).textTheme.headline5,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 16,
                 ),
                 Text(
@@ -65,7 +65,8 @@ class CustomDialog extends StatelessWidget {
                   textAlign: TextAlign.center,
                 ),
                 TextButton(
-                  child: Text(btnText, style: TextStyle(color: Colors.grey)),
+                  child:
+                      Text(btnText, style: const TextStyle(color: Colors.grey)),
                   onPressed: () => Navigator.of(context).pop(),
                 ),
               ],
