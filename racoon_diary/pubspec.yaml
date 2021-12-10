@@ -39,6 +39,7 @@ dependencies:
   delayed_widget: ^1.1.1
   http: ^0.13.3
   intl: ^0.17.0
+  cupertino_date_textbox: ^1.0.1
 
 dev_dependencies:
   flutter_test:

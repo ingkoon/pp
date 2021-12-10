@@ -1,5 +1,8 @@
 import 'package:flutter/cupertino.dart';
+import 'package:cupertino_date_textbox/cupertino_date_textbox.dart';
+
 import 'package:flutter/material.dart';
+
 import 'package:intl/intl.dart';
 import 'package:dd_racoon/resource/utils.dart';
 import 'package:delayed_widget/delayed_widget.dart';
@@ -25,8 +28,23 @@ class signUpEmailPage extends StatefulWidget {
   State<signUpEmailPage> createState() => signUpEmailPageState();
 }
 
+// const String MIN_DATETIME = '1970-01-01';
+// const String MAX_DATETIME = '2021-11-25';
+// const String INIT_DATETIME = '2021-01-01';
+// const String DATE_FORMAT = 'MM월|d일,yyyy년';
+
 class signUpEmailPageState extends State<signUpEmailPage> {
+  //텍스트필드 컨트롤러, 날짜 받아오기 위한 설정
   final nameController = TextEditingController();
+
+  // 생일 변수를 받아오기 위한 함수 지정
+  DateTime _selectedDateTime = DateTime.now();
+  void onBirthdayChange(DateTime birthday) {
+    setState(() {
+      _selectedDateTime = birthday;
+    });
+  }
+
   @override
   void dispose() {
     // Clean up the controller when the widget is disposed.
@@ -34,20 +52,12 @@ class signUpEmailPageState extends State<signUpEmailPage> {
     super.dispose();
   }
 
-  final void Function(DateTime)? onDateTimeChanged;
-  final String? initDateStr;
-
-  signUpEmailPageState({
-    this.onDateTimeChanged,
-    this.initDateStr,
-  });
-
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
-    final initDate =
-        DateFormat('yyyy-MM-dd').parse(initDateStr ?? '2000-01-01');
+    final initDate = DateFormat('yyyy-MM-dd').parse('2000-01-01');
+
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: const Color(0xFFb1a8c0),
@@ -113,14 +123,16 @@ class signUpEmailPageState extends State<signUpEmailPage> {
                               BorderRadius.all(Radius.circular(10.0)))),
                 )),
             Container(
-              height: height * 0.3,
-              child: CupertinoDatePicker(
-                minimumYear: 1900,
-                maximumYear: DateTime.now().year,
-                initialDateTime: initDate,
-                maximumDate: DateTime.now(),
-                onDateTimeChanged: onDateTimeChanged,
-                mode: CupertinoDatePickerMode.date,
+              margin: EdgeInsets.only(
+                  left: width * 0.05,
+                  right: width * 0.05,
+                  bottom: height * 0.05),
+              child: CupertinoDateTextBox(
+                color: Colors.grey,
+                initialValue: initDate,
+                hintColor: Colors.white,
+                onDateChange: onBirthdayChange,
+                hintText: ("Select your birthday"),
               ),
             ),
             Container(
@@ -144,6 +156,9 @@ class signUpEmailPageState extends State<signUpEmailPage> {
                           );
                         });
                   } else {
+                    String formattedDate =
+                        DateFormat('yyyy-MM-dd').format(_selectedDateTime);
+                    print(formattedDate);
                     Get.to(() => signUpInfo(), arguments: nameController.text);
                   }
                 },
