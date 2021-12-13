@@ -29,6 +29,16 @@ app.post('/hellopost1', (req, res)=> {
   res.send(`Hello ${name}`);
 })
  
+app.post('/hellopost1', (req, res)=> {
+  const name = req.body;
+  res.send(`Hello ${name}`);
+})
+ 
+app.post('/hellopost1', (req, res)=> {
+  const name = req.body;
+  res.send(`Hello ${name}`);
+})
+ 
 // response - json 데이터 보내기
 app.post('/hellopost2', (req, res) => {
   const result = {
