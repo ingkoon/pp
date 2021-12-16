@@ -44,6 +44,7 @@ class signUpEmailPageState extends State<signUpEmailPage> {
 
   //   return employees;
   // }
+
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;

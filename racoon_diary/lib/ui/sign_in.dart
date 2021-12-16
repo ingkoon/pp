@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:delayed_widget/delayed_widget.dart';
 import 'sign_up_name.dart';
+import 'homepage.dart';
 
 class SignIn extends StatelessWidget {
   @override
@@ -12,7 +13,10 @@ class SignIn extends StatelessWidget {
       title: 'RCD',
       theme: ThemeData(),
       home: SignInPage(),
-      getPages: [GetPage(name: '/page2', page: () => signUpEmail())],
+      getPages: [
+        GetPage(name: '/signUp', page: () => signUpEmail()),
+        GetPage(name: '/home', page: () => home(), transition: Transition.zoom),
+      ],
     );
   }
 }
@@ -141,7 +145,7 @@ class SignInPageState extends State<SignInPage> {
                                 padding: EdgeInsets.symmetric(
                                     horizontal: width * 0.05)),
                             onPressed: () {
-                              Get.toNamed('/page2');
+                              Get.toNamed('/signUp');
                             },
                             child: const Text(
                               '회원 가입',
@@ -158,6 +162,7 @@ class SignInPageState extends State<SignInPage> {
                                     horizontal: width * 0.05)),
                             onPressed: () {
                               print("Tap Event");
+                              Get.toNamed('/home');
                             },
                             child: const Text(
                               '로그인',
