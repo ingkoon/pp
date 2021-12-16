@@ -12,4 +12,4 @@ function sum2(a: number, ...nums: number[]):number{
 
 let result: number = sum(1,2);
 
-console.log(result)
+console.log(result) // -> 3
