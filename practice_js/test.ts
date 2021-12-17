@@ -26,3 +26,12 @@ function notuse(): void{
     console.log('sth');
 }
 
+notuse()
+
+function sum(a: number, ...nums: number[]): number {
+    let totalOfNums : number = 0;
+    for (let key in nums) {
+      totalOfNums += nums[key];
+    }
+    return a + totalOfNums;
+  }
