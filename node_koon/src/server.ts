@@ -11,7 +11,6 @@ const connection = mysql.createConnection({
   database: "koon",
   port: 3306,
 })
- 
 connection.connect(function(err) {
   if (err) {
     console.log('error appeared!');
@@ -20,12 +19,14 @@ connection.connect(function(err) {
   } else {
     // 접속시 쿼리를 보냅니다.
     connection.query("SELECT * FROM USER", function(err, rows, fields) {
-      console.log(rows); // 결과를 출력합니다!
+      console.log(err)
+      console.log(rows);
+      connection.end(); // 결과를 출력합니다!
     });
   }
 });
 
-connection.end();
+
 // body-parser는 내장되어있음.  json 파싱하기 위해서 설정만 추가
 app.use(express.json());
  
