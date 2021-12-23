@@ -21,20 +21,29 @@ connection.connect(function(err) {
     connection.query("SELECT * FROM USER", function(err, rows, fields) {
       console.log(err)
       console.log(rows);
-      connection.end(); // 결과를 출력합니다!
+      //connection.end(); // 결과를 출력합니다!
     });
   }
 });
-
+// connection.end();
 
 // body-parser는 내장되어있음.  json 파싱하기 위해서 설정만 추가
 app.use(express.json());
  
+
 // express에는 json 데이터를 파싱하는 모듈이 내장되어있다.
 // 하지만 json만 되고 x-www-form-urlencoded를 파싱하기 위해서 아래를 확장해야 한다.
 app.use(express.urlencoded({
   extended: true
 }))
+
+app.get('/1', (req, res) => {
+  connection.query("SELECT * FROM USER", function(err, rows, fields) {
+    //res.end(err)
+    res.end(rows);
+    // connection.end(); // 결과를 출력합니다!
+  });
+})
 
 app.get('/hello2', (req, res) => {
   //get 메서드는 헤더가 필요함
