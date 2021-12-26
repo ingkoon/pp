@@ -2,12 +2,24 @@ import * as dotenv from "dotenv";
 import express,{Request, Response, NextFunction}from 'express';
 import cors from "cors";
 import { sequelize } from './app/mysql/model';
+import {config} from '../src/app/mysql/config/config'
 
 dotenv.config();
 
 const PORT: number = parseInt(process.env.PORT as string, 10) || 8080;
 const HOST: string = process.env.HOST || 'localhost';
 const app = express();
+
+let mysql: any = require("mysql");
+
+let connection : any = mysql.createConnection({
+  host: config.development.host,
+  uesr: config.development.username,
+  password: config.development.password,
+  database: config.development.database,
+  port: 3306,
+})
+
 
 
 //cors(Cross-Origin Resource Sharing) 사용 - 다른 포트의 리소스 사용요청 용도로 사용
@@ -28,7 +40,6 @@ app.use(express.urlencoded({
 }))
 
 
-
 app.listen(PORT, HOST, async() => {
   console.log('Server is listening 8080');
 
@@ -36,8 +47,20 @@ app.listen(PORT, HOST, async() => {
    await sequelize.authenticate()
    .then(async () => {
        console.log("connection success");
+       
    })
    .catch((e) => {
        console.log('TT : ', e);
    })
+});
+
+connection.connect(function(err) {
+  if (err) {
+    throw err; // 접속에 실패하면 에러를 throw 합니다.
+  } else {
+    // 접속시 쿼리를 보냅니다.
+    connection.query("SELECT * FROM Users", function(err, rows, fields) {
+      console.log(rows); // 결과를 출력합니다!
+    });
+  }
 });
