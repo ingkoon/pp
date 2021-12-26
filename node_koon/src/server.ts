@@ -14,7 +14,7 @@ let mysql: any = require("mysql");
 
 let connection : any = mysql.createConnection({
   host: config.development.host,
-  uesr: config.development.username,
+  user: config.development.username,
   password: config.development.password,
   database: config.development.database,
   port: 3306,
@@ -59,8 +59,9 @@ connection.connect(function(err) {
     throw err; // 접속에 실패하면 에러를 throw 합니다.
   } else {
     // 접속시 쿼리를 보냅니다.
-    connection.query("SELECT * FROM Users", function(err, rows, fields) {
-      console.log(rows); // 결과를 출력합니다!
+    connection.query("SHOW tables", function(err, rows, fields) {
+      console.log(err)
+      // console.log(rows); // 결과를 출력합니다!
     });
   }
 });
