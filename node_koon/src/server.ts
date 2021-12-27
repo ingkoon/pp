@@ -10,6 +10,9 @@ const PORT: number = parseInt(process.env.PORT as string, 10) || 8080;
 const HOST: string = process.env.HOST || 'localhost';
 const app = express();
 
+const router = express.Router();
+router.use('', require('func'));
+
 let mysql: any = require("mysql");
 
 let connection : any = mysql.createConnection({
@@ -19,6 +22,7 @@ let connection : any = mysql.createConnection({
   database: config.development.database,
   port: 3306,
 })
+
 
 
 
@@ -61,7 +65,8 @@ connection.connect(function(err) {
     // 접속시 쿼리를 보냅니다.
     connection.query("SHOW tables", function(err, rows, fields) {
       console.log(err)
-      // console.log(rows); // 결과를 출력합니다!
+      console.log(rows); // 결과를 출력합니다!
     });
   }
 });
+
