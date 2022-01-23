@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
+import './post/postPage.dart';
 
 class home extends StatelessWidget {
   @override
@@ -18,69 +20,60 @@ class homePage extends StatefulWidget {
 }
 
 class homePageState extends State<homePage> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      floatingActionButton: true
-          ? FloatingActionButton(
-              backgroundColor: Color(0xFFb5d3b6),
-              onPressed: () {},
-              tooltip: 'Create',
-              child: const Icon(Icons.add),
-            )
-          : null,
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      bottomNavigationBar: _DemoBottomAppBar(
-        fabLocation: FloatingActionButtonLocation.centerDocked,
-        shape: true ? const CircularNotchedRectangle() : null,
-      ),
-      body: Container(),
-    );
-  }
-}
+  var _bottomNavIndex = 0; //default index of a first screen
 
-class _DemoBottomAppBar extends StatelessWidget {
-  const _DemoBottomAppBar({
-    this.fabLocation = FloatingActionButtonLocation.endDocked,
-    this.shape = const CircularNotchedRectangle(),
-  });
+  final iconList = <IconData>[
+    Icons.access_time,
+    Icons.article_outlined,
+    Icons.alternate_email,
+    Icons.account_circle_outlined,
+  ];
 
-  final FloatingActionButtonLocation fabLocation;
-  final NotchedShape? shape;
-
-  static final List<FloatingActionButtonLocation> centerLocations =
-      <FloatingActionButtonLocation>[
-    FloatingActionButtonLocation.centerDocked,
-    FloatingActionButtonLocation.centerFloat,
+  static List<Widget> widgetList = <Widget>[
+    TimeLinePage(),
+    Text('2'),
+    Text('3'),
+    Text('4'),
   ];
 
   @override
   Widget build(BuildContext context) {
-    return BottomAppBar(
-      shape: shape,
-      color: Color(0xFFb5d3b6),
-      child: IconTheme(
-        data: IconThemeData(color: Theme.of(context).colorScheme.onPrimary),
-        child: Row(
-          children: <Widget>[
-            IconButton(
-              tooltip: 'Open navigation menu',
-              icon: const Icon(Icons.menu),
-              onPressed: () {},
-            ),
-            if (centerLocations.contains(fabLocation)) const Spacer(),
-            IconButton(
-              tooltip: 'Search',
-              icon: const Icon(Icons.search),
-              onPressed: () {},
-            ),
-            IconButton(
-              tooltip: 'Favorite',
-              icon: const Icon(Icons.favorite),
-              onPressed: () {},
-            ),
-          ],
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          'Koon\s Diary',
+          style: TextStyle(
+            color: Colors.black,
+          ),
         ),
+        backgroundColor: Colors.white,
+        toolbarHeight: 70,
+      ),
+      floatingActionButton: FloatingActionButton(
+        hoverElevation: 30,
+        //params
+        backgroundColor: Colors.white,
+        child: Icon(
+          Icons.add_rounded,
+          color: Colors.black,
+          size: 35,
+        ),
+        onPressed: () {},
+      ),
+      body: IndexedStack(
+        index: _bottomNavIndex,
+        children: widgetList,
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      bottomNavigationBar: AnimatedBottomNavigationBar(
+        icons: iconList,
+        iconSize: 26,
+        activeIndex: _bottomNavIndex,
+        activeColor: Color(0xFFb5d3b6),        
+        gapLocation: GapLocation.center,
+        notchSmoothness: NotchSmoothness.defaultEdge,
+        onTap: (index) => setState(() => _bottomNavIndex = index),
+        //other params
       ),
     );
   }

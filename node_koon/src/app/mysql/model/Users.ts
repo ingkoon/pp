@@ -72,50 +72,7 @@ export class Users extends Model<UsersAttributes>{
     // };
 }
 //----------------------------
-Users.init(
-    {
-        userid:{ 
-            type: DataTypes.STRING(20),            
-            allowNull: false,
-        },
-        userpwd: {
-            type: DataTypes.STRING(20),
-            allowNull: false,
-        }, 
-        username:{
-            type: DataTypes.STRING(10),
-            allowNull: false,
-        },
-        email: {
-            type: DataTypes.STRING(30),
-            allowNull: false,
-        },
-    
-        nickname: {
-            type: DataTypes.STRING(12),
-            allowNull: false,
-        },
-    
-        birth: {
-            type: DataTypes.DATE,
-            allowNull: false,
-        },
-        joindate: {
-            type: DataTypes.DATE,            
-            allowNull: false,
-            // defaultValue: sequelize.literal('NOW()')
-        },
-    
-    },
-    {
-        modelName : 'Users',
-        tableName : 'Users',
-        sequelize,
-        freezeTableName : true,
-        timestamps : true,
-        updatedAt : 'updateTimestamp'
-    }
-)
+ 
 
 // Users.hasMany(Scores, {
 //     sourceKey : "id",

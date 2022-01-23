@@ -3,9 +3,7 @@ import 'package:dd_racoon/resource/utils.dart';
 
 import 'package:delayed_widget/delayed_widget.dart';
 import 'package:get/get.dart';
-import 'package:http/http.dart' as http;
-import 'package:dd_racoon/model/model.dart';
-import 'dart:convert';
+
 
 class signUpEmail extends StatelessWidget {
   Widget build(BuildContext context) {
