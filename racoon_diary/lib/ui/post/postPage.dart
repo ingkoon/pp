@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:dd_racoon/resource/timeline/postCard.dart';
-
 import 'package:carousel_slider/carousel_slider.dart';
 
 class TimeLine extends StatelessWidget {

@@ -1,16 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import './post/postPage.dart';
+import './post/post.content.dart';
+import 'package:get/get.dart';
 
 class home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'RCD',
-      theme: ThemeData(),
-      home: homePage(),
-    );
+    return GetMaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'RCD',
+        theme: ThemeData(),
+        home: homePage(),
+        getPages: [
+          GetPage(name: '/postContent', page: () => PostContent()),
+        ]);
   }
 }
 
@@ -69,7 +73,7 @@ class homePageState extends State<homePage> {
         icons: iconList,
         iconSize: 26,
         activeIndex: _bottomNavIndex,
-        activeColor: Color(0xFFb5d3b6),        
+        activeColor: Color(0xFFb5d3b6),
         gapLocation: GapLocation.center,
         notchSmoothness: NotchSmoothness.defaultEdge,
         onTap: (index) => setState(() => _bottomNavIndex = index),
