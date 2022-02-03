@@ -7,14 +7,12 @@ import 'package:get/get.dart';
 class home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'RCD',
-        theme: ThemeData(),
-        home: homePage(),
-        getPages: [
-          GetPage(name: '/postContent', page: () => PostContent()),
-        ]);
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'RCD',
+      theme: ThemeData(),
+      home: homePage(),
+    );
   }
 }
 
@@ -62,7 +60,9 @@ class homePageState extends State<homePage> {
           color: Colors.black,
           size: 35,
         ),
-        onPressed: () {},
+        onPressed: () {
+          Get.toNamed('/post');
+        },
       ),
       body: IndexedStack(
         index: _bottomNavIndex,

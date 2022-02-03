@@ -4,6 +4,7 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:delayed_widget/delayed_widget.dart';
 import 'sign_up_name.dart';
 import 'homepage.dart';
+import './post/post.content.dart';
 
 class SignIn extends StatelessWidget {
   @override
@@ -16,6 +17,7 @@ class SignIn extends StatelessWidget {
       getPages: [
         GetPage(name: '/signUp', page: () => signUpEmail()),
         GetPage(name: '/home', page: () => home(), transition: Transition.zoom),
+        GetPage(name: '/post', page: ()=> PostContent())        
       ],
     );
   }
