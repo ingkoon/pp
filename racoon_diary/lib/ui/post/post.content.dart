@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-// ignore_for_file:  unused_import,  file_names, prefer_const_constructors
 
+
+// ignore_for_file:  unused_import,  file_names, prefer_const_constructors
 
 class PostContent extends StatelessWidget {
   @override
@@ -10,7 +11,7 @@ class PostContent extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'timeline',
-      theme: ThemeData(),      
+      theme: ThemeData(),
       home: PostContentPage(),
     );
   }
@@ -54,13 +55,13 @@ class PostContentPageState extends State<PostContentPage> {
                     Get.back();
                   }),
               Container(
-                
-                margin: EdgeInsets.only(top: height * 0.01),
-                child: Text(dateTime,style: const TextStyle(fontSize: 27),))
-              
+                  margin: EdgeInsets.only(top: height * 0.01),
+                  child: Text(
+                    dateTime,
+                    style: const TextStyle(fontSize: 27),
+                  ))
             ]),
           ),
-
           Container(
             height: height * 0.1,
             margin: EdgeInsets.only(top: height * 0.05),
@@ -77,41 +78,42 @@ class PostContentPageState extends State<PostContentPage> {
               ),
             ),
           ),
-
           Container(
             height: height * 0.4,
-            child:
-              TextField(
-                maxLines: 15, 
-                decoration: InputDecoration(
-                    labelText: 'Contents',
-                    labelStyle: const TextStyle(color: Colors.grey),
-                    filled: true,
-                    fillColor: Colors.white, 
-                    enabledBorder: 
-                    OutlineInputBorder(
+            child: TextField(
+              maxLines: 15,
+              decoration: InputDecoration(
+                labelText: 'Contents',
+                labelStyle: const TextStyle(color: Colors.grey),
+                filled: true,
+                fillColor: Colors.white,
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(0)),
+                  borderSide: BorderSide(width: 1, color: Colors.white),
+                ),
+                focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(0)),
-                    borderSide: BorderSide(width: 1, color: Colors.white),
-                          ),
-                    focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(0)),
-                        borderSide: BorderSide(width: 1, color: Colors.black)),
-                  ),
+                    borderSide: BorderSide(width: 1, color: Colors.black)),
               ),
-          ),    
-           FloatingActionButton(
-        hoverElevation: 30,
-        //params
-        backgroundColor: Colors.white,
-        child: Icon(
-          Icons.check_circle_outline_rounded ,
-          color: Colors.black,
-          size: 35,
-        ),
-        onPressed: () {
-          Get.back();
-        },
-      ),    
+            ),
+          ),
+          Container(),
+          Container(
+            alignment: Alignment.bottomRight,
+            child: FloatingActionButton(
+              hoverElevation: 40,
+              //params
+              backgroundColor: Colors.white,
+              child: Icon(
+                Icons.check_circle_outline_rounded,
+                color: Colors.black,
+                size: 35,
+              ),
+              onPressed: () {
+                Get.back();
+              },
+            ),
+          ),
         ]),
       ),
     );
